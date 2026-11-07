@@ -2455,7 +2455,8 @@ spawn(function()
 			if _25msShared.BringMob and StartMagnet then
 				for L_234_forvar0, L_235_forvar1 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 					if L_235_forvar1.Name == MonFarm and L_235_forvar1:FindFirstChild("Humanoid") and L_235_forvar1.Humanoid.Health > 0 then
-						if (L_235_forvar1.PrimaryPart.Position - FarmPos.Position).Magnitude <= 700 then
+						if (L_235_forvar1.PrimaryPart.Position - FarmPos.Position).Magnitude <= 600
+then
 							L_235_forvar1.PrimaryPart.CFrame = FarmPos;
 							L_235_forvar1.PrimaryPart.CanCollide = true;
 							L_235_forvar1.HumanoidRootPart.Size = Vector3.new(5, 1, 5)
