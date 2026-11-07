@@ -5113,7 +5113,7 @@ end)
 
 spawn(function()
     while wait(0.1) do
-        if _G.Grabfruit then
+        if false and _G.Grabfruit then
             for _, v in pairs(game.Workspace:GetChildren()) do
                 if string.find(v.Name, "Fruit") and v:FindFirstChild("Handle") then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
@@ -5892,6 +5892,38 @@ spawn(function()
 						TP(closest.HumanoidRootPart.CFrame * MethodFarm)
 					until not _25msShared.NeareastFarm or not closest.Parent or closest.Humanoid.Health <= 0
 					StartMagnet = false
+				end
+			end)
+		end
+	end
+end)
+spawn(function()
+	while wait(0.2) do
+		if _G.Grabfruit then
+			pcall(function()
+				local char = game.Players.LocalPlayer.Character
+				local root = char and char:FindFirstChild("HumanoidRootPart")
+				if not root then return end
+				for _, v in pairs(game.Workspace:GetChildren()) do
+					local handle = v:FindFirstChild("Handle")
+					if v.Name ~= "Blox Fruit Dealer" and string.find(v.Name, "Fruit") and handle then
+						root.CFrame = handle.CFrame * CFrame.new(0, 3, 0)
+						wait(0.2)
+						root.CFrame = handle.CFrame
+						if firetouchinterest then
+							firetouchinterest(root, handle, 0)
+							wait()
+							firetouchinterest(root, handle, 1)
+						end
+						if fireproximityprompt then
+							for _, p in pairs(v:GetDescendants()) do
+								if p:IsA("ProximityPrompt") then
+									fireproximityprompt(p)
+								end
+							end
+						end
+						wait(0.3)
+					end
 				end
 			end)
 		end
